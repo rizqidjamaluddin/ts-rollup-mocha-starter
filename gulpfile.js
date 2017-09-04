@@ -1,13 +1,12 @@
-const gulp        = require('gulp');
-const ts          = require('gulp-typescript');
-const merge       = require('merge2');
-const dts         = require('dts-bundle');
-const del         = require('del');
-const rollup      = require('gulp-better-rollup');
-const runSequence = require('run-sequence');
-const rename      = require("gulp-rename");
+const gulp        = require('gulp'),
+      $           = require('gulp-load-plugins')(),
+      merge       = require('merge2'),
+      dts         = require('dts-bundle'),
+      del         = require('del'),
+      runSequence = require('run-sequence');
 
-let tsProject = ts.createProject('tsconfig.json');
+
+let tsProject = $.typescript.createProject('tsconfig.json');
 
 gulp.task('clean:dist', function () {
     return del('dist/**/*');
@@ -29,22 +28,22 @@ gulp.task('compile:ts', function () {
 
 gulp.task('definitions-bundle', function () {
     return dts.bundle({
-        name: "ts-rollup-mocha-starter",
-        main: ".tmp/definitions/main.d.ts",
-        out: "../definitions-bundle/main.d.ts"
+        name : "ts-rollup-mocha-starter",
+        main : ".tmp/definitions/main.d.ts",
+        out  : "../definitions-bundle/main.d.ts"
     });
 });
 
 gulp.task('bundle', function () {
     return merge([
-        gulp.src('.tmp/js/main.js').pipe(rollup({}, 'umd'))
-            .pipe(rename('main.umd.js'))
+        gulp.src('.tmp/js/main.js').pipe($.betterRollup({}, 'umd'))
+            .pipe($.rename('main.umd.js'))
             .pipe(gulp.dest('dist')),
-        gulp.src('.tmp/js/main.js').pipe(rollup({}, 'cjs'))
-            .pipe(rename('main.cjs.js'))
+        gulp.src('.tmp/js/main.js').pipe($.betterRollup({}, 'cjs'))
+            .pipe($.rename('main.cjs.js'))
             .pipe(gulp.dest('dist')),
-        gulp.src('.tmp/js/main.js').pipe(rollup({}, 'es'))
-            .pipe(rename('main.esm.js'))
+        gulp.src('.tmp/js/main.js').pipe($.betterRollup({}, 'es'))
+            .pipe($.rename('main.esm.js'))
             .pipe(gulp.dest('dist'))
     ]);
 });
@@ -65,6 +64,6 @@ gulp.task('build', function (callback) {
     )
 });
 
-gulp.task('dev', ['compile:ts'], function () {
+gulp.task('default', ['compile:ts', 'definitions-bundle'], function () {
     gulp.watch('src/*.ts', ['compile:ts', 'definitions-bundle']);
 });
