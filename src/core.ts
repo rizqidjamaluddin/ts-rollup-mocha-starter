@@ -3,7 +3,7 @@ export default class Example {
         console.log(input);
     }
 
-    public map<T> (input: Array<T>): Array<T> {
+    public map (input: Array<string>): Array<string> {
         return input.map(i => {
             return "Hello " + i + "!";
         })

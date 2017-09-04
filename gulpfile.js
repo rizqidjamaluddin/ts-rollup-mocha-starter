@@ -59,7 +59,7 @@ gulp.task('build', function (callback) {
         'compile:ts',
         'definitions-bundle',
         ['bundle', 'copy:definitions-bundle'],
-        // 'clean:tmp',
+        'clean:tmp',
         callback
     )
 });

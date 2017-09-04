@@ -8,7 +8,7 @@ declare module 'ts-rollup-mocha-starter' {
 declare module 'ts-rollup-mocha-starter/core' {
     export default class Example {
         run(input: string): void;
-        map<T>(input: Array<T>): Array<T>;
+        map(input: Array<string>): Array<string>;
     }
 }
 
