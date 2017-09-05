@@ -1,5 +1,6 @@
 'use strict';
 
+var v4 = require('uuid/v4');
 var Example = /** @class */ (function () {
     function Example() {
     }
@@ -10,6 +11,9 @@ var Example = /** @class */ (function () {
         return input.map(function (i) {
             return "Hello " + i + "!";
         });
+    };
+    Example.prototype.uid = function () {
+        return v4();
     };
     return Example;
 }());

@@ -9,6 +9,7 @@ declare module 'ts-rollup-mocha-starter/core' {
     export default class Example {
         run(input: string): void;
         map(input: Array<string>): Array<string>;
+        uid(): string;
     }
 }
 

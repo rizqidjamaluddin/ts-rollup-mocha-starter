@@ -5,8 +5,13 @@
   "module": "dist/main.esm.js",
   "browser": "dist/main.umd.js",
   "dependencies": {
+    "@types/lodash": "^4.14.74",
+    "@types/lodash-es": "^4.14.6",
+    "@types/uuid": "^3.4.1",
     "del": "^3.0.0",
-    "gulp-rename": "^1.2.2"
+    "gulp-rename": "^1.2.2",
+    "lodash-es": "^4.17.4",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "dts-bundle": "^0.7.3",
@@ -14,6 +19,7 @@
     "gulp-better-rollup": "^1.1.1",
     "gulp-load-plugins": "^1.5.0",
     "gulp-typescript": "^3.2.2",
+    "gulp-uglify": "^3.0.0",
     "merge2": "^1.1.0",
     "rollup": "^0.46.0",
     "rollup-plugin-commonjs": "^8.0.2",

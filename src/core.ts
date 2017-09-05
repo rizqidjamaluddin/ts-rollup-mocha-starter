@@ -1,3 +1,5 @@
+let v4 = require('uuid/v4');
+
 export default class Example {
     public run (input: string) {
         console.log(input);
@@ -7,5 +9,9 @@ export default class Example {
         return input.map(i => {
             return "Hello " + i + "!";
         })
+    }
+
+    public uid (): string {
+        return v4();
     }
 }
