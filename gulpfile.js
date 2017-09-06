@@ -43,16 +43,21 @@ gulp.task('bundle', function () {
             moduleName: moduleName,
             plugins: [resolve({browser: true}), commonjs()]
         }, 'umd'))
-            .pipe($.uglify())
+            // .pipe($.uglify())
             .pipe($.rename('main.umd.js'))
             .pipe(gulp.dest('dist')),
-        gulp.src('.tmp/js/main.js').pipe($.betterRollup({}, 'cjs'))
+        gulp.src('.tmp/js/main.js').pipe($.betterRollup({
+            moduleName: moduleName,
+            plugins: [resolve({}), commonjs()]
+        }, 'cjs'))
             .pipe($.rename('main.cjs.js'))
             .pipe(gulp.dest('dist')),
-        // gulp.src('.tmp/js/main.js').pipe($.betterRollup({
-        //     }, 'es'))
-        //     .pipe($.rename('main.esm.js'))
-        //     .pipe(gulp.dest('dist'))
+        gulp.src('.tmp/js/main.js').pipe($.betterRollup({
+            moduleName: moduleName,
+            plugins: [resolve({}), commonjs()]
+        }, 'es'))
+            .pipe($.rename('main.esm.js'))
+            .pipe(gulp.dest('dist'))
     ]);
 });
 
@@ -67,7 +72,7 @@ gulp.task('build', function (callback) {
         'compile:ts',
         'definitions-bundle',
         ['bundle', 'copy:definitions-bundle'],
-        'clean:tmp',
+        // 'clean:tmp',
         callback
     )
 });

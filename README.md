@@ -6,6 +6,12 @@ So you want to:
 
 This starter kit does exactly that.
 
+## Customizing
+
+Change the `gulpfile.js` `moduleName` variable to match your
+project name. This is the name a default export in `main.ts`
+will be available in the browser by.
+
 ## Gulp Setup
 
 ### Build
