@@ -33,9 +33,9 @@
     "ts-node": "^3.3.0"
   },
   "scripts": {
-    "build": " ntsc -d && rollup -c",
-    "dev": "ntsc -d -w && rollup -c -w",
-    "test": "node test/test.js",
+    "build": "gulp build",
+    "dev": "gulp",
+    "test": "mocha -r ts-node/register test/*.ts",
     "pretest": "npm run build"
   },
   "files": [
